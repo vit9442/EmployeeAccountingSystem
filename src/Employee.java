@@ -7,14 +7,14 @@ public class Employee implements Serializable {
     private String FIO;
     private Date birth;
     private String gender;
-    private int phoneNumber;
+    private String phoneNumber;
     private String position;
-    private String department;
-    private String boss;
+    private Department department;
+
     private Date startDate;
     private double salary;
     private final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-    public Employee(String FIO, String gender, int phoneNumber, String position, String department, String boss,String birth, double salary) {
+    public Employee(String FIO, String gender, String phoneNumber, String position, Department department,String birth, double salary) {
 
         this.FIO = FIO;
 
@@ -22,7 +22,6 @@ public class Employee implements Serializable {
         this.phoneNumber = phoneNumber;
         this.position = position;
         this.department = department;
-        this.boss = boss;
         startDate = new Date();
         this.salary = salary;
         try {
@@ -46,7 +45,7 @@ public class Employee implements Serializable {
         this.gender = gender;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -54,13 +53,11 @@ public class Employee implements Serializable {
         this.position = position;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
-    public void setBoss(String boss) {
-        this.boss = boss;
-    }
+
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
@@ -82,7 +79,7 @@ public class Employee implements Serializable {
         return gender;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -90,13 +87,11 @@ public class Employee implements Serializable {
         return position;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public String getBoss() {
-        return boss;
-    }
+
 
     public Date getStartDate() {
         return startDate;
@@ -109,14 +104,14 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Сотрудник: {" +
                 "ФИО='" + FIO + '\'' +
                 ", Дата рождения=" + formatter.format(birth) +
                 ", Пол='" + gender + '\'' +
                 ", Телефон=" + phoneNumber +
                 ", Должность='" + position + '\'' +
-                ", отдел='" + department + '\'' +
-                ", Начальник='" + boss + '\'' +
+                ", отдел='" + department.getDepartmentName() + '\'' +
+                ", Начальник='" + department.getDepartmentBoss() + '\'' +
                 ", Дата начала работы=" + formatter.format(startDate) +
                 ", зарплата=" + salary +"руб." +
                 '}';
